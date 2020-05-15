@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="b.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       {{date| formatDate |hhh(9,18)}}
+       {{apple}}
+       <hr>
+       <span class="dd" v-text='apple'></span>
+       <!--疑惑一： 要这个啥用呢，你看上面的不是一样的，加样式么 ，目前这样理解的-->
+       <button v-on:click='changeapp'>dhhd</button>
+       <span v-html='banana'>我不展示</span>
+       <!-- 我是直接解析html,注意内容在下面data那边中间写 -->
+       <div v-bind:class='nn'>dddddddddd</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            date:new Date(),
+            apple:'jdidiehidhd',
+            banana:'<span style="background-color: aqua;">hhhhh</span>',
+            nn:'red',
+        },
+        methods:{
+           changeapp: function(){
+                this.apple='sd'//疑惑二：怎么用呀,目前理解是结合v-on触发事件带动方法即可
+           }
+        },
+        mounted:function(){
+            var _this=this;
+            this.timer = setInterval(
+                function(){_this.date=new Date();
+            },1000);      
+        },
+       
+        filters:{
+            formatDate:function(value){//默认传入一个参数value就是那个|之前要处理的东西
+                var d=new Date(value)//将字符串转成日期date类型
+                var year=d.getFullYear()
+                var month=d.getMonth()+1
+                var day=d.getDate()
+                // return value
+                return year+'年'+month+'月'+day+"日"
+
+            },
+            hhh:function(value,a,b){//a和b是作为第二三个参数传的
+                return value+a//第二个过滤器的数据value是第一个过滤器处理过的
+            }
+        },
+        beforeDestory:function(){
+            if(this.timer){
+                clearInterval(this.timer)
+            }
+        },
+    })
+</script>
+</html>
