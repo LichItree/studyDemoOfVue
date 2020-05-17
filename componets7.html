@@ -6,22 +6,48 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app">
-        <my-c></my-c>
+    <div id="app"> 
+        <btn></btn>
+        <btn></btn>
+    <!-- 父向子传递内容 -->
+        <!-- <my-son msg='tomyson'></my-son> -->
+        <!-- <my-son msg=tomyson></my-son>怎么让msg是个变量呢，为什么这样不行 -->
+<!-- d动态初始化 -->
+        <input type="text" v-model='jj'>
+                        <!-- 之前错误了，记得v-model在data里面初始化哦 -->
+        <my-son v-bind:msg='jj'></my-son>
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script>
-    Vue.component('my-c',{
-        temmplate:'<div>dddddddd</div>'
-    })
+    Vue.component('my-c',{template:'<div>dddddddd</div>'})
     var app=new Vue({
         el:'#app',
         data:{
-             
+            jj:'whh',
+            msg:'geiwoerziale'
         },
-        component:{'my-e',{temmplate:'<div></div>'},
-        }
+        components:{
+            'btn':{
+                template:'<button @click="count++">{{count}}</button>',
+                data:function(){
+                    return {
+                        count:0//返回一个对象，为啥就独立开了呢,靓仔疑惑？
+                    }
+                }
+            },
+            // <!-- 父向子传递内容 -->
+            // 'my-son':{
+            //     props:['msg'],//接受父亲的话的
+            //     template:'<div>{{msg}}</div>',// 
+            // },
+            'my-son':{
+                props:['msg'],
+                template:'<div>{{msg}}</div>',// 
+                }
+            },
+            
+        
 
     })
 </script>
