@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="b.css">
+</head>
+<body>
+    <div id="app"> 
+        <!-- <div>user:<input type="text" placeholder="username" v-if='type===name'></div>错误， -->
+        <div  v-if="type==='name'">user:<input type="text" placeholder="username" key='1'></div>
+        <div  v-else>pass:<input type="text" placeholder="pass"  key='2'></div>
+        <button v-on:click='toggleType'>bbb</button>
+        <ul>
+            <li v-for='item in items'>{{item}}</li>
+        </ul>
+        <div v-for='value in objs'>{{value}}</div>
+        <div v-bind:class='xx'>bsbssjasbhasdbs</div>
+        <button v-on:click='toggleXX'>xxx</button>
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            type:'name',
+            items:[{q:'1'},{w:0},{hwh:97}],
+            objs:{
+                hnnh:'11',
+                hhh:'ssss',
+                hh:'ss',
+            },
+            xx:'sjs',
+        },
+        methods:{
+            toggleType:function(){
+                this.type=(this.type==='name'?'pass':'name')
+            },
+            toggleXX:function(){
+                this.xx='cc'
+            },
+        }
+    })
+</script>
+</html>

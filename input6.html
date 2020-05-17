@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" name="" v-model='aaaa'>{{aaaa}}<!-- 立刻同步输入内容 -->
+       <br>
+        <!-- 单选一个框v1  ,不能用v-model-->
+        <label for="x">sss<input type="radio"  v-bind:checked='xx'></label>
+        <br>
+        <!-- 单选多个框v2 v-model对应的数据变量绑定value-->
+            1<input type="radio" name="v2" value="1" v-model='checked'>
+            2<input type="radio" name="v2" value="2"  v-model='checked'>
+            3<input type="radio" name="v2" value="3"  v-model='checked'>{{checked}}
+       <br>
+        <!-- 单个复选框v3  -->
+        <!-- 4<input type="checkbox" name="v3" value="4" v-bind:checked='one'>{{name}}
+        <br>这里错误，因为单个不用加name的！！！！！！
+        4<input type="rcheckbox" name="v3" value="4" v-model='one'>{{name}} -->
+        4<input type="checkbox"  value="4" v-bind:checked='one'>
+        <br>
+        4<input type="checkbox"  value="4" v-model='one'>
+        <br>
+        
+        <!-- 多个复选框v4 -->
+        1<input type="checkbox" name="v4" value="1" v-model='checks'>
+        2<input type="checkbox" name="v4" value="2"  v-model='checks'>
+        3<input type="checkbox" name="v4" value="3"  v-model='checks'>{{checks}}
+
+        <!-- 单选的下拉框 -->
+        <select v-model='selected'>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>{{selected}}
+            <!-- 注意在这里写这个没有用呀，去下拉框外面写吧 -->
+            <hr> 
+        </select>
+        {{selected}}
+         <!-- 多选的下拉框 -->
+         <select v-model='selected2' multiple>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option> 
+            <hr> 
+        </select>
+        {{selected2}}
+<!-- 动态绑定值，单选按钮 -->
+sssssssssssssssssssssssssssssssssssssssssssss<input type="radio" v-model='pp' v-bind:value='vv'>{{pp}}
+<br>
+<!-- 动态绑定值，单选按钮复选框，选中和不选中值不一样 -->
+bbbbbbbbbbbbbbbbbbbbbbb<input type="checkbox" v-model='ll' :true-value='po' :false-value='right'>
+{{ll}}
+<hr> 
+<hr> 
+
+<select v-model='s' v-bind:value='{kk:pp}'>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option> 
+</select>
+{{s}}
+
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            s:'',
+            po:'000',
+            right:'111',
+            ll:true,
+            // 记得初始化v-model为true或者其他
+             xx:true,
+             checked:null,
+             checks:[],
+             selected:'1',
+             selected2:[],
+
+             one:false,
+             aaaa:'ssssssssss',
+             pp:true,
+            vv:'ddd'
+        },
+        methods:{
+         
+        },
+    })
+</script>
+</html>
+</html>

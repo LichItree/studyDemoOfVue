@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{reverse1}} -->
+        <!-- {{reverse2()}} -->
+        {{fullName}}
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            // text1:'123,111,dhue',
+            // text2:'000,111,pppp',
+            firstName:'li',//我可能是个傻子，错误，把：写成=
+            lastName:'ji',
+            fullName:'li,ji'
+        },
+        watch:{
+            firstName: function (val) {
+              this.fullName = val + ' ' + this.lastName
+             },
+             lastName: function (val) {
+                  this.fullName = this.firstName + ' ' + val
+            }
+        },
+        // computed:{
+        //    reverse1: function(){
+        //     return this.text1.split(',').reverse().join(',')//可以结合input来吗，对不同字符串操作
+        //    }       
+        // },
+        // methods:{
+        //     reverse2: function(){
+        //     return this.text2.split(',').reverse().join(',')
+        //    }         
+        // }
+        computed:{
+            // fullName:function(){这样是错误的,不止一个儿子
+            fullName:{
+                get:function(){
+                    // return firstName+lastName,错误，我忘记加上this了
+                    return this.firstName+''+this.lastName;
+                },
+                set:function(value){
+                    var names=value.split(',');
+                    this.firstName=names[0]
+                    this.lastName=names[1]
+                }
+            }
+        }
+    })
+</script>
+</html>

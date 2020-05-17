@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-c></my-c>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    Vue.component('my-c',{
+        temmplate:'<div>dddddddd</div>'
+    })
+    var app=new Vue({
+        el:'#app',
+        data:{
+             
+        },
+        component:{'my-e',{temmplate:'<div></div>'},
+        }
+
+    })
+</script>
+</html>
+</html>

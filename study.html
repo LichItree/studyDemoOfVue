@@ -17,6 +17,8 @@
        <span v-html='banana'>我不展示</span>
        <!-- 我是直接解析html,注意内容在下面data那边中间写 -->
        <div v-bind:class='nn'>dddddddddd</div>
+       <button v-on:click='changeNN'>dhhd</button>
+
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -32,6 +34,9 @@
         methods:{
            changeapp: function(){
                 this.apple='sd'//疑惑二：怎么用呀,目前理解是结合v-on触发事件带动方法即可
+           },
+           changeNN: function(){
+                this.nn='gray'
            }
         },
         mounted:function(){

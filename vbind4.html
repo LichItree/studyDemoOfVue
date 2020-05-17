@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="b.css">
+</head>
+<body>
+    <div id="app">
+        <!-- <span :class={x:flag}>dd</span> -->
+        <a :href="l">ddddd</a>
+        <span :class={x:flag}>dd</span>
+        <span :class=[z,y]>eeeee</span>
+        <div :style="{background:y}"> ddddddddddddddddddddddddddddddddd</div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    var app=new Vue({
+        el:'#app',
+        data:{
+            flag:true,
+            l:'http://www.baidu.com',
+            z:'red',
+            y:'gray'
+        }
+    })
+</script>
+</html>
